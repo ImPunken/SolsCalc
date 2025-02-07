@@ -39,7 +39,7 @@
             <option value="2000000">Gravitational</option>
             <option value="2000000">Bounded: Unbound</option>
             <option value="2500000">Virtual</option>
-            <option value="3200000">Savior</option>
+            <option value="3200000">Savior</option>1
             <option value="4000000">Aquatic: Flame</option>
             <option value="4000000">Poseidon</option>
             <option value="4500000">Zeus</option>
@@ -94,11 +94,12 @@
             <option value="0">None</option>
             <option value="0.25">Luck Glove</option>
             <option value="0.5">Solar Device</option>
-            <option value="0.5">Eclipse Device</option>
+            <option value="0.5">Eclipse Device</option>\
+            <option value="0.5">Tide Gauntlet</option>
             <option value="1">Exo Gauntlet</option>
-            <option value="2.5">Galactic Device</option>
-            <option value="1.5">Subzero Device</option>
             <option value="1.15">Windstorm Device</option>
+            <option value="1.5">Subzero Device</option>
+            <option value="2.5">Galactic Device</option>
             <option value="2.9">Volcanic Device</option>
             <option value="3.4">Exoflex Device</option>
             <option value="3.95">Hologrammer</option>
@@ -111,10 +112,10 @@
 
         <label for="left-gear">Left Gear:</label>
         <select id="left-gear" name="left-gear" disabled>
-            <option value="2">None (x2)</option>
-            <option value="6">Gravitational Device (x6)</option>
             <option value="1.35">Flesh Device (x1.35)</option>
+            <option value="3">Blessed Tide Gauntlet (x3)</option>
             <option value="5">Dark Shader (x5)</option>
+            <option value="6">Gravitational Device (x6)</option>
         </select>
         <input type="checkbox" id="bonus-roll" name="bonus-roll" onclick="toggleBonusRoll()">
         <label for="bonus-roll">Bonus Roll Gears</label>
@@ -290,8 +291,13 @@
         <br><br>
 
         <button type="submit">Calculate!</button>
-    </form>
+        
+        <br><br>
+        <br><br>
 
+        <button type="button" onclick="openChangelog()">Changelog</button>
+    </form>
+    
     <script>
         function toggleBonusRoll() {
             const leftGearSelect = document.getElementById("left-gear");
@@ -316,6 +322,10 @@
             } else {
                 bonusRoll.disabled = false;
             }
+        }
+
+        function openChangelog() {
+            window.open("changelog.html", "Changelog", "width=auto,height=auto");
         }
 
         document.getElementById("rarity-form").addEventListener("submit", function(event) {
