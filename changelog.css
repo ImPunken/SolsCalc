@@ -18,6 +18,7 @@ body::before {
     background-repeat: inherit;
     background-attachment: inherit;
     z-index: -1;
+    background-color: #00000a;
 }
 
 h1 {
