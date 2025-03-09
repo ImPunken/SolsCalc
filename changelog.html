@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,25 @@
     <link rel="stylesheet" href="changelog.css">
     <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <h1>Changelog</h1>
     <ul>
+        <li class="changelog-item" onclick="toggleChangelog(this)">
+            Version 2.6 - 09.03.2025:
+            <ul>
+                <li>- Revamped some UI Elements;</li>
+                <div style="height: 5px;"></div>
+                <li class="changelog-item" onclick="toggleChangelog(this)">
+                    Ex. :
+                    <ul>
+                        <li>- New Site Background;</li>
+                        <li>- Scrollbar and Checkboxes;</li>
+                        <li>- Overall Improvement of Color Balancing;</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
         <li class="changelog-item" onclick="toggleChangelog(this)">
             Version 2.5 - 26.02.2025:
             <ul>
@@ -26,8 +43,9 @@
             <ul>
                 <li>- Added a Cookie system to remember user's last choices;</li>
                 <li>- Added "Manual Luck" field, if you are too lazy to manually select everything;</li>
-                <li>- Added "Native-Rarity" option while calculating to see the chance of getting that aura inside its native biome;</li>
-            
+                <li>- Added "Native-Rarity" option while calculating to see the chance of getting that aura inside its
+                    native biome;</li>
+
                 <div style="height: 5px;"></div>
 
                 <li class="changelog-item" onclick="toggleChangelog(this)">
@@ -43,7 +61,8 @@
             Version 2.3 - 12.02.2025:
             <ul>
                 <li>- Added "Unique Tier" auras (from 50k to 90k rarity);</li>
-                <li>- Added "Winter Blessing", "Winter Blessing+", "Lucky Penny" and "Pumpkin" under "Other-Effects";</li>
+                <li>- Added "Winter Blessing", "Winter Blessing+", "Lucky Penny" and "Pumpkin" under "Other-Effects";
+                </li>
 
                 <div style="height: 5px;"></div>
 
@@ -57,7 +76,8 @@
                 <li class="changelog-item" onclick="toggleChangelog(this)">
                     HOTFIX 2 - 13.02.2025:
                     <ul>
-                        <li>- Fixed "Winter Blessings" which conflicted both with each other and with achievement boosts;</li>
+                        <li>- Fixed "Winter Blessings" which conflicted both with each other and with achievement
+                            boosts;</li>
                         <li>- Removed unuseful "None" checkboxes in "Potions" and "Other-Effects"</li>
                     </ul>
                 </li>
@@ -84,7 +104,8 @@
                     HOTFIX 1 - 10.02.2025:
                     <ul>
                         <li>- Fixed "Aegis" missing on aura dropdown menu;</li>
-                        <li>- Added section for "-- Final-Luck Potions" and "-- Current Event Final-Luck Potions" in final luck potions dropdown menu;</li>
+                        <li>- Added section for "-- Final-Luck Potions" and "-- Current Event Final-Luck Potions" in
+                            final luck potions dropdown menu;</li>
                         <li>- Added "Santa Claus Potion" under "Potions";</li>
                         <li>- Removed "Pump King's Blood";</li>
                     </ul>
@@ -121,8 +142,54 @@
     <button onclick="window.close()">Close</button>
 
     <div class="footer">
-        <h6>Version 2.5 || Suggestions or bugs <u>(REGARDING THIS CALCULATOR)</u>? -> my discord: <a href="http://discordapp.com/users/946093484568358922" target="_blank" style="color: white; font-weight: bold;">@itz_jaack</a></h6>
+        <h6>Version 2.5 || Suggestions or bugs <u>(REGARDING THIS CALCULATOR)</u>? -> my discord: <a
+                href="http://discordapp.com/users/946093484568358922" target="_blank"
+                style="color: white; font-weight: bold;">@itz_jaack</a></h6>
     </div>
+
+    <script>
+        function createStars() {
+            const container = document.createElement('div');
+            container.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            `;
+
+            for (let i = 0; i < 400; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() * 3;
+                star.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: white;
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    opacity: ${Math.random() * 0.5 + 0.5};
+                    animation: twinkle ${Math.random() * 3 + 2}s infinite;
+                `;
+                container.appendChild(star);
+            }
+
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes twinkle {
+                    0%, 100% { opacity: 0.2; }
+                    50% { opacity: 0.7; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(container);
+        }
+        createStars();
+    </script>
 
     <script>
         function toggleChangelog(element) {
@@ -130,4 +197,5 @@
         }
     </script>
 </body>
+
 </html>
