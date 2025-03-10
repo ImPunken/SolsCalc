@@ -3,7 +3,9 @@ body {
     margin: 20px;
     color: white;
     position: relative;
+    background-color: #00000a;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -16,16 +18,19 @@ body::before {
     background-repeat: inherit;
     background-attachment: inherit;
     z-index: -1;
+    background-color: #00000a;
 }
+
 h1 {
     color: white;
     position: relative;
     z-index: 1;
 }
+
 button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: rgb(128, 152, 189);
+    background-color: rgb(42, 62, 92);
     color: white;
     border: none;
     border-radius: 5px;
@@ -33,11 +38,14 @@ button {
     position: relative;
     z-index: 1;
 }
-button:hover, button:active {
-    background-color: rgb(195, 206, 223);
+
+button:hover,
+button:active {
+    background-color: rgb(42, 62, 92);
 }
+
 .changelog-item {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(27, 27, 27, 0.9);
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -46,11 +54,13 @@ button:hover, button:active {
     position: relative;
     z-index: 1;
 }
+
 .changelog-item ul {
     display: none;
     list-style-type: none;
     padding-left: 20px;
 }
+
 .changelog-item.open ul {
     display: block;
 }

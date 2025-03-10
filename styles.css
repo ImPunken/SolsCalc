@@ -2,16 +2,17 @@ body {
     overflow-x: auto;
     overflow-y: auto;
     font-family: 'Sarpanch', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #00000a;
     color: #ffffff;
     margin: 0;
     padding: 20px;
-    background-image: url('https://i.namu.wiki/i/cfTuzuN30MHAxlgUd009XVYw6ALjHyNK0s3J529ETI1a3DiS7hKu67e4APnWkMsP25Cnj31sCEs6u8kttaX7nw.webp');
+    background-image: none;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -19,14 +20,12 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: inherit;
-    background-size: inherit;
-    background-repeat: inherit;
-    background-attachment: inherit;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
     z-index: -1;
 }
+
 .centered-rectangle {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(19, 21, 30, 0.95);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -35,36 +34,45 @@ body::before {
     text-align: center;
     position: relative;
     z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgb(255, 255, 255, 0.5);
 }
-h1, p {
+
+h1,
+p {
     background-color: transparent;
     color: white;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
 }
+
 h1 {
     color: white;
     text-align: center;
     font-weight: bold;
 }
+
 h2 {
     text-align: center;
     color: #333;
     font-size: 1.5em;
     margin-top: 0;
 }
+
 h3 {
     text-align: center;
     color: #555;
     font-size: 1.2em;
     margin-top: 0;
 }
+
 p {
     color: white;
     font-size: 1em;
     margin-top: 0;
 }
+
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -76,43 +84,103 @@ form {
     z-index: 1;
     border: 1.5px solid rgb(255, 255, 255, 0.5);
 }
+
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
-select, input[type="number"], input[type="checkbox"], button {
+
+select,
+input[type="number"],
+input[type="checkbox"],
+button {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
-    background-color: rgb(18, 18, 18); 
+    background-color: rgb(18, 18, 18);
     border: 1px solid #ccc;
     border-radius: 4px;
     color: white;
     font-family: 'Sarpanch', sans-serif;
     box-sizing: border-box;
 }
+
 select {
-    color: white; 
+    color: white;
 }
+
 input[type="number"] {
     height: 42px;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    position: relative;
+}
+
+input[type="number"]::-webkit-inner-spin-button:after,
+input[type="number"]::-webkit-outer-spin-button:after {
+    content: "▲";
+    position: absolute;
+    right: -5px;
+    color: rgb(42, 62, 92);
+    font-size: 10px;
+    transform: translateY(-8px);
+}
+
+input[type="number"]::-webkit-inner-spin-button:before,
+input[type="number"]::-webkit-outer-spin-button:before {
+    content: "▼";
+    position: absolute;
+    right: -5px;
+    color: rgb(42, 62, 92);
+    font-size: 10px;
+    transform: translateY(8px);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(42, 62, 92);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(42, 62, 92);
+}
+
+select::-webkit-scrollbar {
+    width: 8px;
+}
+
 button {
-    background-color: rgb(128, 152, 189);
+    background-color: rgb(42, 62, 92);
     color: white;
     border: none;
     cursor: pointer;
 }
-button:hover, button:active {
-    background-color: rgb(195, 206, 223);
+
+button:hover,
+button:active {
+    background-color: rgb(42, 62, 92);
 }
 
 input[type="text"] {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
-    background-color: rgb(18, 18, 18); 
+    background-color: rgb(18, 18, 18);
     border: 1px solid #ccc;
     border-radius: 4px;
     color: white;
@@ -146,6 +214,24 @@ input[type="text"]:disabled {
     transform: scale(1.2);
     cursor: pointer;
     align-self: center;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: rgb(18, 18, 18);
+    border: 2px solid rgb(128, 152, 189);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(128, 152, 189);
+    font-size: 14px;
 }
 
 .checkbox-group label {
@@ -158,11 +244,13 @@ input[type="text"]:disabled {
 }
 
 .cb_leftgear {
-    margin-left: 0px; 
+    margin-left: 0px;
 }
+
 .cb_potions {
-    margin-left: 0px; 
+    margin-left: 0px;
 }
+
 .cb_othereffects {
     margin-left: 0px;
 }
@@ -170,14 +258,16 @@ input[type="text"]:disabled {
 #manual-luck-container {
     display: none;
 }
-#manual-luck:checked ~ #manual-luck-container {
+
+#manual-luck:checked~#manual-luck-container {
     display: block;
 }
 
 #auto-container {
     display: block;
 }
-#manual-luck:checked ~ #auto-container {
+
+#manual-luck:checked~#auto-container {
     display: none;
 }
 
@@ -232,11 +322,11 @@ input[type="text"]:disabled {
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(20px);
 }
 
@@ -269,7 +359,7 @@ input:checked + .slider:before {
     padding: 20px;
     border-radius: 10px;
     z-index: 10000;
-    width: 400px; 
+    width: 400px;
     height: 200px;
     text-align: center;
     box-sizing: border-box;
@@ -277,16 +367,16 @@ input:checked + .slider:before {
 
 .alert-popup .alert-content {
     position: relative;
-    height: 100%; 
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .alert-popup button {
-    margin-top: auto; 
+    margin-top: auto;
     padding: 10px 20px;
-    background-color: rgb(128, 152, 189);
+    background-color: rgb(42, 62, 92);
     color: white;
     border: none;
     border-radius: 5px;
@@ -294,8 +384,9 @@ input:checked + .slider:before {
     align-self: center;
 }
 
-.alert-popup button:hover, .alert-popup button:active {
-    background-color: rgb(195, 206, 223);
+.alert-popup button:hover,
+.alert-popup button:active {
+    background-color: rgb(42, 62, 92);
 }
 
 body.blur .centered-rectangle,

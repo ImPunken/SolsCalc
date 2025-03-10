@@ -188,7 +188,7 @@ function closeAlert() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("rarity-form").addEventListener("submit", function(event) {
+    document.getElementById("rarity-form").addEventListener("submit", function (event) {
         event.preventDefault();
 
         let playerLuck;
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
         saveFormInputs();
     });
 
-    window.onload = function() {
+    window.onload = function () {
         loadFormInputs();
     };
 });
