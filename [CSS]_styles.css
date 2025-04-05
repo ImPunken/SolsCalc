@@ -211,12 +211,12 @@ input[type="text"]:disabled {
 
 .checkbox-group input[type="checkbox"] {
     margin-right: 5px;
-    transform: scale(1.2);
+    transform: scale(1.1); 
     cursor: pointer;
     align-self: center;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px; 
     background-color: rgb(18, 18, 18);
     border: 2px solid rgb(128, 152, 189);
     border-radius: 4px;
@@ -232,6 +232,17 @@ input[type="text"]:disabled {
     transform: translate(-50%, -50%);
     color: rgb(128, 152, 189);
     font-size: 14px;
+}
+
+.checkbox-group input[type="checkbox"]:disabled {
+    background-color: #555;
+    border-color: #777;
+    cursor: not-allowed;
+}
+
+.checkbox-group input[type="checkbox"]:disabled::after {
+    content: "";
+    color: transparent;
 }
 
 .checkbox-group label {

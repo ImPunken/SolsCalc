@@ -190,6 +190,27 @@ function closeAlert() {
     document.body.style.pointerEvents = "auto"; 
 }
 
+function enforceMutualExclusion(group) {
+    const selected = Array.from(group).filter(cb => cb.checked);
+    group.forEach(cb => {
+        cb.disabled = selected.length > 0 && !cb.checked;
+    });
+}
+
+function enforceFinalLuckExclusion() {
+    const oblivion = document.querySelector("input[name='final-luck'][value='600000']");
+    const pumpBlood = document.querySelector("input[name='final-luck'][value='700000']");
+
+    if (oblivion.checked) {
+        pumpBlood.disabled = true;
+    } else if (pumpBlood.checked) {
+        oblivion.disabled = true;
+    } else {
+        oblivion.disabled = false;
+        pumpBlood.disabled = false;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rarity-form").addEventListener("submit", function(event) {
         event.preventDefault();
@@ -382,7 +403,92 @@ document.addEventListener("DOMContentLoaded", () => {
         saveFormInputs();
     });
 
+    const fortunePotions = document.querySelectorAll("input[name='fortune']");
+    const achievementBoosts = document.querySelectorAll("input[name='exclusiveEffects']");
+    const heavenlyPotions = document.querySelectorAll("input[name='final-luck'][value='15000'], input[name='final-luck'][value='150000']");
+    const finalLuckPotions = document.querySelectorAll("input[name='final-luck']");
+
+    fortunePotions.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(fortunePotions));
+    });
+
+    achievementBoosts.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(achievementBoosts));
+    });
+
+    heavenlyPotions.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(heavenlyPotions));
+    });
+
+    finalLuckPotions.forEach(cb => {
+        cb.addEventListener("change", enforceFinalLuckExclusion);
+    });
+
     window.onload = function() {
         loadFormInputs();
     };
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fortunePotions = document.querySelectorAll("input[name='fortune']");
+    const achievementBoosts = document.querySelectorAll("input[name='exclusiveEffects']");
+    const heavenlyPotions = document.querySelectorAll("input[name='final-luck'][value='15000'], input[name='final-luck'][value='150000']");
+    const godlyPotions = document.querySelectorAll("input[id='godly_zeus'], input[id='godly_poseidon'], input[id='godly_hades']");
+    const oblivion = document.querySelector("input[name='final-luck'][value='600000']");
+    const pumpBlood = document.querySelector("input[name='final-luck'][value='700000']");
+    const allCheckboxes = document.querySelectorAll("input[type='checkbox']");
+    const manualLuck = document.getElementById("manual-luck");
+    const totalLuck = document.getElementById("total-luck");
+    const vipModifiers = document.querySelectorAll("select[name='vip']");
+
+    function enforceMutualExclusion(group) {
+        const selected = Array.from(group).filter(cb => cb.checked);
+        group.forEach(cb => {
+            cb.disabled = selected.length > 0 && !cb.checked;
+        });
+    }
+
+    function enforceFinalLuckExclusion() {
+        if (oblivion.checked || pumpBlood.checked) {
+            allCheckboxes.forEach(cb => {
+                if (cb !== manualLuck && cb !== totalLuck && cb !== oblivion && cb !== pumpBlood) {
+                    cb.disabled = true;
+                }
+            });
+            vipModifiers.forEach(select => {
+                select.disabled = false;
+            });
+            if (oblivion.checked) pumpBlood.disabled = true;
+            if (pumpBlood.checked) oblivion.disabled = true;
+        } else {
+            allCheckboxes.forEach(cb => {
+                cb.disabled = false;
+            });
+            vipModifiers.forEach(select => {
+                select.disabled = false;
+            });
+            oblivion.disabled = false;
+            pumpBlood.disabled = false;
+        }
+    }
+
+    fortunePotions.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(fortunePotions));
+    });
+
+    achievementBoosts.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(achievementBoosts));
+    });
+
+    heavenlyPotions.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(heavenlyPotions));
+    });
+
+    godlyPotions.forEach(cb => {
+        cb.addEventListener("change", () => enforceMutualExclusion(godlyPotions));
+    });
+
+    [oblivion, pumpBlood].forEach(cb => {
+        cb.addEventListener("change", enforceFinalLuckExclusion);
+    });
 });

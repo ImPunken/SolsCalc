@@ -32,7 +32,7 @@
             <option value="50000" class="lunar">Lunar</option>
             <option value="50000" class="starlight">STARLIGHT</option>
             <option value="50000" class="star_rider">Star Rider</option>
-            <option value="69000" class="flushed_lobotomy">Flushed: Lobotomy</option>
+            <option value="69000" class="flushed_lobotomy">:Flushed: : Lobotomy</option>
             <option value="70000" class="hazard_rays">HAZARD: RAYS</option>
             <option value="70000" class="nautilus">Nautilus</option>
             <option value="73500" class="permafrost">Permafrost</option>
@@ -53,6 +53,7 @@
             <option value="1280000" class="rage_brawler">Rage: Brawler</option>
             <option value="1111000" class="undefined">Undefined</option>
             <option value="1336000" class="astral">Astral</option>
+            <option value="1520000" class="cosmos">Cosmos</option>
             <option value="2000000" class="gravitational">Gravitational</option>
             <option value="2000000" class="bounded_unbound">Bounded: Unbound</option>
             <option value="2500000" class="virtual">Virtual</option>
@@ -83,7 +84,9 @@
             <option value="49999500" class="exotic_apex">Exotic · APEX</option>
             <option value="50000000" class="matrix">Matrix</option>
             <option value="60000000" class="twilight_iridescent_memory">Twilight: Iridescent Memory</option>
+            <option value="7630000" class="velocity">Velocity</option>
             <option value="80000000" class="sailor_flying_dutchman">Sailor: Flying Dutchman</option>
+            <option value="90000000" class="helios">Helios</option>
             <option value="99999999" class="chromatic_genesis">CHROMATIC: GENESIS</option>
             <option value="100000000" class="starscourge_radiant">STARSCOURGE: RADIANT</option>
             <option value="150000000" class="overture">Overture</option>
@@ -102,19 +105,15 @@
             <option value="503000000" class="matrix_overdrive">{♢ MATRIX /◆ OVERDRIVE ♢}</option>
             <option value="601020102" class="matrix_reality">MATRIX □ REALITY</option>
             <option value="750000000" class="sovereign">SOVEREIGN</option>
+            <option value="800000000" class="ruins_withered">Ruins: Withered</option>
             <option value="825000000" class="aegis">﴾AEGIS﴿</option>
+            <option value="1073741824" class="pixelation">▣ PIXELATION ▣</option>
             <option value="1200000000" class="luminosity">[ Luminosity ]</option>
-            <option value="" disabled style="color: grey;">-- Current Event Auras</option>
-            <option value="12000000" class="wonderland">Wonderland</option>
-            <option value="45000000" class="santa_frost">SANTA - FROST</option>
-            <option value="72000000" class="winter_fantasy">< Winter fantasy ></option>
-            <option value="90000000" class="express">Express</option>
-            <option value="120000000" class="abomitable">{❄️ABOMITABLE❄️}</option>
-            <option value="510000000" class="atlas_yuletide">A T L A S: YULETIDE</option>
-            <option value="" disabled style="color: grey;">-- Tickets</option>
-            <option value="10000" class="ticket">Normal Item Ticket</option>
-            <option value="100000" class="ticket">Rare Item Ticket</option>
-            <option value="1000000" class="ticket">Mega Item Ticket</option>
+            <option value="" disabled style="color: rgb(73, 137, 221);">-- Current Event Auras</option>
+            <option value="3198" class="pukeko">pukeko</option>
+            <option value="1000000" class="flushed_troll">:Flushed: : Troll</option>
+            <option value="8000000" class="origin_onion">Origin: Onion</option>
+            <option value="140000000" class="glock_of_the_sky">Glock: the glock of the sky</option>
         </select>
 
         <div style="height: 20px;"></div>
@@ -133,7 +132,8 @@
             <div id="bonus-roll-container" style="display: none;">
                 <label for="bonus-roll">Bonus Roll:</label>
                 <select id="bonus-roll" name="bonus-roll">
-                    <option value="2">None (x2)</option>
+                    <option value="1">No (x1)</option>
+                    <option value="2">Yes (x2)</option>
                     <option value="1.35">Flesh Device (x1.35)</option>
                     <option value="3">Blessed Tide Gauntlet (x3)</option>
                     <option value="4">X-Mas Champion (x4)</option>
@@ -165,14 +165,16 @@
                 <option value="4.55">Ragnaröker (+455%)</option>
                 <option value="7">Starshaper (+700%)</option>
                 <option value="8">Pump punch (+800%)</option>
+                <option value="8.5">Neuralyzer (+850%)</option>
             </select>
 
             <div style="height: 20px;"></div>
 
-            <label for="left-gear">Left Gear:</label>
+            <label for="left-gear">Bonus Roll / Left Gear:</label>
             <select id="left-gear" name="left-gear" onchange="updateTotalLuck()">
                 <option value="" disabled style="color: grey;">-- Bonus Roll</option>
-                <option value="2">None (x2)</option>
+                <option value="1">No (x1)</option>
+                <option value="2">Yes (x2)</option>
                 <option value="1.35">Flesh Device (x1.35)</option>
                 <option value="3">Blessed Tide Gauntlet (x3)</option>
                 <option value="4">X-Mas Champion (x4)</option>
@@ -187,54 +189,112 @@
             <div style="height: 20px;"></div>
 
             <label>Potions:</label>
-            <div class="cb_potions">
+            <div class="cb_potions" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
                 <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" id="luckyPotion" name="potions" value="1" onclick="potions_validateSelection()">
-                        Lucky Potion (+100%)
+                        <input type="checkbox" id="godly_poseidon" name="potions" value="-0.5" onclick="potions_validateSelection()">
+                        Godly Potion | Poseidon (-50%)
                     </label>
                 </div>
                 <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" id="fortunePotionI" name="fortune" value="1.5" onclick="potions_validateSelection()">
-                        Fortune Potion I (+150%)
+                        <input type="checkbox" id="luckyPotion" name="potions" value="0.25" onclick="potions_validateSelection()">
+                        Lucky Potion (+25%)
                     </label>
                 </div>
                 <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" id="fortunePotionII" name="fortune" value="2" onclick="potions_validateSelection()">
-                        Fortune Potion II (+200%)
+                        <input type="checkbox" id="fortunePotionI" name="fortune" value="0.5" onclick="potions_validateSelection()">
+                        Fortune Potion I (+50%)
                     </label>
                 </div>
                 <div class="checkbox-group">
                     <label>
-                        <input type="checkbox" id="fortunePotionIII" name="fortune" value="2.5" onclick="potions_validateSelection()">
-                        Fortune Potion III (+250%)
+                        <input type="checkbox" id="fortunePotionII" name="fortune" value="0.75" onclick="potions_validateSelection()">
+                        Fortune Potion II (+75%)
                     </label>
                 </div>
-                
-                <div style="height: 15px;"></div>
-                
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="fortunePotionIII" name="fortune" value="1" onclick="potions_validateSelection()">
+                        Fortune Potion III (+100%)
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="jewelry" name="potions" value="1.2" onclick="potions_validateSelection()">
+                        Jewelry Potion (+120%)
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="zombie" name="potions" value="1.2" onclick="potions_validateSelection()">
+                        Zombie Potion (+150%)
+                    </label>
+                </div>
                 <div class="checkbox-group">
                     <label>
                         <input type="checkbox" id="santa_claus" name="potions" value="1.5" onclick="potions_validateSelection()">
                         Santa Claus Potion (+150%)
                     </label>
                 </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="godly_zeus" name="potions" value="2" onclick="potions_validateSelection()">
+                        Godly Potion | Zeus (200%)
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="godly_hades" name="potions" value="3" onclick="potions_validateSelection()">
+                        Godly Potion | Hades (300%)
+                    </label>
+                </div>
             </div>
 
             <div style="height: 20px;"></div>
                         
-            <label for="final-luck">Final-Luck Potions:</label>
-            <select id="final-luck" name="final-luck" onchange="updateTotalLuck()">
-                <option value="" disabled style="color: grey;">-- Final-Luck Potions</option>
-                <option value="0">None</option>
-                <option value="20000">Heavenly Potion I (+20.000)</option>
-                <option value="200000">Heavenly Potion II (+200.000)</option>
-                <option value="500000">Oblivion Potion (+500.000)</option>
-                <option value="700000">Pump King's Blood (+700.000)</option>
-                <option value="" disabled style="color: grey;">-- Current Event Final-Luck Potions</option>
-            </select>
+            <label>Final-Luck Potions:</label>
+            <div class="final-luck-potions">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="15000" onclick="updateTotalLuck()">
+                            Heavenly Potion I (+15.000)
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="50000" onclick="updateTotalLuck()">
+                            Potion of Bound (+50.000)
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="150000" onclick="updateTotalLuck()">
+                            Heavenly Potion II (+150.000)
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="400000" onclick="updateTotalLuck()">
+                            Godlike Potion (+400.000)
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="600000" onclick="updateTotalLuck()">
+                            Oblivion Potion (+600.000)
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="final-luck" value="700000" onclick="updateTotalLuck()">
+                            Pump King's Blood (+700.000)
+                        </label>
+                    </div>
+                </div>
+            </div>
 
             <div style="height: 15px;"></div>
 
@@ -248,7 +308,7 @@
             <div style="height: 20px;"></div>
 
             <label for="other-effects" id="other-effects">Other Effects:</label>
-            <div class="cb_othereffects">
+            <div class="cb_othereffects" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
                 <div class="checkbox-group">
                     <label>
                         <input type="checkbox" id="clover" name="effects" value="0.4" onclick="updateTotalLuck()">
@@ -303,21 +363,6 @@
                         Grandmaster! (+40%)
                     </label>
                 </div>
-
-                <div style="height: 15px;"></div>
-
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="wb" name="wbs" value="0.5" onclick="updateTotalLuck()">
-                        Winter Blessing (+50%)
-                    </label>
-                </div>
-                <div class="checkbox-group">
-                    <label>
-                        <input type="checkbox" id="wb+" name="wbs" value="1" onclick="updateTotalLuck()">
-                        Winter Blessing + (+100%)
-                    </label>
-                </div>
             </div>
 
             <div style="height: 20px;"></div>
@@ -348,19 +393,7 @@
             <button type="button" onclick="openChangelog()">Changelog</button>
         </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                updateTotalLuck();
-                updateVisitCounter();
-                setInterval(() => {
-                    updateVisitCounter();
-                    startCountdown();
-                }, 10000);
-                startCountdown();
-            });
-        </script>
-    </form>
-
+        
     <div id="alert-popup" class="alert-popup" style="display: none;">
         <div class="alert-content">
             <span id="alert-message"></span>
@@ -369,51 +402,7 @@
     </div>
 
     <div class="footer">
-        <h6>Version 2.6 || Suggestions or bugs <u>(REGARDING THIS CALCULATOR)</u>? -> my discord: <a href="http://discordapp.com/users/946093484568358922" target="_blank" style="color: white; font-weight: bold;">@itz_jaack</a></h6>
+        <h6>Version 2.7 || Suggestions or bugs <u>(REGARDING THIS CALCULATOR)</u>? -> my discord: <a href="http://discordapp.com/users/946093484568358922" target="_blank" style="color: white; font-weight: bold;">@itz_jaack</a></h6>
     </div>
-
-    <script>
-            function createStars() {
-            const container = document.createElement('div');
-            container.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: -1;
-            `;
-
-            for (let i = 0; i < 400; i++) {
-                const star = document.createElement('div');
-                const size = Math.random() * 3;
-                star.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    background: white;
-                    border-radius: 50%;
-                    top: ${Math.random() * 100}%;
-                    left: ${Math.random() * 100}%;
-                    opacity: ${Math.random() * 0.5 + 0.5};
-                    animation: twinkle ${Math.random() * 3 + 2}s infinite;
-                `;
-                container.appendChild(star);
-            }
-
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes twinkle {
-                    0%, 100% { opacity: 0.2; }
-                    50% { opacity: 0.7; }
-                }
-            `;
-            document.head.appendChild(style);
-
-            document.body.appendChild(container);
-        }
-        createStars();
-    </script>
 </body>
 </html>
