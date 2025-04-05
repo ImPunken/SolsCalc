@@ -179,15 +179,13 @@ function loadFormInputs() {
 function showAlert(message) {
     document.getElementById("alert-message").innerText = message;
     document.getElementById("alert-popup").style.display = "block";
-    document.body.classList.add("blur");
-    document.getElementById("alert-popup").style.pointerEvents = "auto"; 
-    document.getElementById("alert-popup").querySelector("button").style.pointerEvents = "auto";
 }
 
 function closeAlert() {
-    document.getElementById("alert-popup").style.display = "none";
-    document.body.classList.remove("blur");
-    document.body.style.pointerEvents = "auto"; 
+    const alertPopup = document.getElementById("alert-popup");
+    if (alertPopup) {
+        alertPopup.style.display = "none";
+    }
 }
 
 function enforceMutualExclusion(group) {
@@ -233,8 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const nativeRarities = {
             "solar": 5000,
             "lunar": 5000,
-            "starlight": 5000,
-            "star_rider": 5000,
+            "starlight": 10000,
+            "star_rider": 10000,
             "flushed_lobotomy": 69000,
             "hazard_rays": 14000,
             "nautilus": 70000,
@@ -243,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "exotic": 99999,
             "diaboli_void": 100400,
             "undead_devil": 20000,
-            "comet": 12000,
+            "comet": 24000,
             "jade": 125000,
             'spectre': 140000,
             'jazz': 160000,
@@ -264,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "poseidon": 1000000,
             "zeus": 4500000,
             "solar_solstice": 500000,
-            "galaxy": 500000,
+            "galaxy": 1000000,
             "lunar_fullmoon": 500000,
             "twilight": 600000,
             "origin": 6500000,
@@ -272,11 +270,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "celestial_divine": 7000000,
             "hyper_volt": 7500000,
             "nihility": 9000,
-            "starscourge": 1000000,
+            "starscourge": 2000000,
             "sailor": 3000000,
             "glitch": 12210110,
             "stormal_hurricane": 4500000,
-            "sirius": 1400000,
+            "sirius": 2800000,
             "arcane_legacy": 15000000,
             "chromatic": 20000000,
             "aviator": 24000000,
@@ -288,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "twilight_iridescent_memory": 6000000,
             "sailor_flying_dutchman": 20000000,
             "chromatic_genesis": 99999999,
-            "starscourge_radiant": 10000000,
+            "starscourge_radiant": 20000000,
             "overture": 150000000,
             "symphony": 175000000,
             "impeached": 40000000,
@@ -299,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "bloodlust": 50000000,
             "atlas": 90000000,
             "abyssal_hunter": 100000000,
-            "gargantua": 43000000,
+            "gargantua": 86000000,
             "apostolos": 444000000,
             "ruins": 500000000,
             "matrix_overdrive": 503000000,
@@ -346,8 +344,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 right_left_Gear += 0.77;
                 bonusRoll = 2;
             }
-            finalLuck = parseInt(document.getElementById("final-luck").value);
-            resonance_of_elements = parseFloat(document.getElementById("resonance").value) / 100;
+            const finalLuckElement = document.getElementById("final-luck");
+            finalLuck = finalLuckElement ? parseInt(finalLuckElement.value) : 0;
+            const resonanceElement = document.getElementById("resonance");
+            resonance_of_elements = resonanceElement ? parseFloat(resonanceElement.value) / 100 : 0;
             friendCount = parseInt(document.getElementById("friend-count").value);
             vip = parseFloat(document.getElementById("vip").value);
 
@@ -491,4 +491,11 @@ document.addEventListener("DOMContentLoaded", () => {
     [oblivion, pumpBlood].forEach(cb => {
         cb.addEventListener("change", enforceFinalLuckExclusion);
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const closeButton = document.querySelector("#alert-popup button");
+    if (closeButton) {
+        closeButton.addEventListener("click", closeAlert);
+    }
 });

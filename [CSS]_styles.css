@@ -171,9 +171,10 @@ button {
     cursor: pointer;
 }
 
-button:hover,
-button:active {
-    background-color: rgb(42, 62, 92);
+button:hover, button:active {
+    background-color: rgb(60, 80, 120);
+    color: #fff;
+    transition: all 0.2s ease-in-out;
 }
 
 input[type="text"] {
@@ -321,7 +322,7 @@ input[type="text"]:disabled {
     border-radius: 20px;
 }
 
-.slider:before {
+slider:before {
     position: absolute;
     content: "";
     height: 16px;
@@ -397,13 +398,10 @@ input:checked+.slider:before {
 
 .alert-popup button:hover,
 .alert-popup button:active {
-    background-color: rgb(42, 62, 92);
-}
-
-body.blur .centered-rectangle,
-body.blur form,
-body.blur .footer {
-    filter: blur(5px);
+    background-color: rgb(60, 80, 120);
+    color: #fff;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
 }
 
 .visit-counter {
@@ -448,15 +446,6 @@ body.blur .footer {
     border-radius: 5px;
     font-size: 1em;
     z-index: 1000;
-}
-
-body.blur .centered-rectangle,
-body.blur form,
-body.blur .footer,
-body.blur .visit-counter,
-body.blur .countdown {
-    filter: blur(5px);
-    pointer-events: none;
 }
 
 .changelog-item {
